@@ -55,12 +55,3 @@ public class Main {
         return ObjectMapperFactory.getObjectMapper().readValue(file, configClass);
     }
 }
-
-
-/*
- *
- * Make all class attributes final.
- * Write unit test for Graph
- * Add title/picture for front-end.
- * Readme.md
- */
