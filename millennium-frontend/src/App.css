@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.background-container {
+  background-image: url('../public/star-wars-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: center;
+  color: white; /* Ensure text is readable on the background */
+  z-index: 1; /* Ensure this is below the form */
+  position: relative;
+}
+
+
+.form-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #61dafb;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container {
+    position: relative;
+    z-index: 10; /* Bring the form to the front */
+}

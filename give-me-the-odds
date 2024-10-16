@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check if the script received exactly two arguments
+if [ "$#" -ne 2 ]; then
+  echo "Usage: ./give-me-the-odds.sh <millennium-falcon.json> <empire.json>"
+  exit 1
+fi
+
+# Assign the input arguments to variables
+MILLENNIUM_FALCON_JSON=$1
+EMPIRE_JSON=$2
+
+# Execute the Maven command with the provided arguments
+mvn clean compile exec:java -Dexec.args="$MILLENNIUM_FALCON_JSON $EMPIRE_JSON" -Dorg.slf4j.simpleLogger.defaultLogLevel=warn
