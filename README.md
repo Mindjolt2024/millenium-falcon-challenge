@@ -28,7 +28,7 @@ The backend is made with SpringBoot. Run the following command to start the back
 $ mvn clean spring-boot:run
 ```
 
-Now, this start listening at `localhost:8080`. We can send a POST via curl to verify the working
+Now, the server will start listening at `localhost:8080`. We can send a `POST` via curl to verify the working
 ```
 curl -X POST http://localhost:8080/millennium/traverse \
 -H "Content-Type: application/json" \
@@ -41,6 +41,7 @@ The frontend is written with React. Start the front-end with the following comma
 ```angular2html
 # Navigate to the front-end directory
 $ cd millennium-frontend
+$ npm install # Only the first time.
 $ npm start
 ```
 

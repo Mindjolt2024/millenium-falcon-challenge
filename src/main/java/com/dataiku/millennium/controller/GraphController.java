@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("millennium")
+// Exists to whitelist CORS while running on the same machine (for demo purposes).
 @CrossOrigin(origins = "http://localhost:3000")
 public class GraphController {
     private final GraphService graphService;
@@ -18,6 +19,11 @@ public class GraphController {
         this.graphService = graphService;
     }
 
+    /**
+     * Endpoint that calculates the chances of planet survival given certain Empire information.
+     * @param context Contains a collection of BountyHunters and a countdown.
+     * @return a truncated integer signifying the maximum chances of survival.
+     */
     @PostMapping(value = "/traverse")
     public int traverse(@RequestBody EmpireContext context) {
         return graphService.traverse(context);

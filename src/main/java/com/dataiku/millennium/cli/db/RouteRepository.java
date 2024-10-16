@@ -33,6 +33,7 @@ public class RouteRepository {
                 int travelTime = results.getInt("travel_time");
                 routes.add(new Route(origin, destination, travelTime));
             }
+            logger.info("Routes successfully read from database");
         } catch (SQLException e) {
             logger.severe("Error while reading data from the database: " + e.getMessage());
         }

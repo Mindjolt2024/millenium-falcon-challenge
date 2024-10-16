@@ -21,11 +21,20 @@ public class Graph {
     private final Map<String, List<Edge>> edgeMap;
     private final GraphProperties properties;
 
+    /**
+     * Initialize a Graph with GraphProperties.
+     * @param graphProperties This is a subset of MillenniumConfig properties containing the autonomy,
+     *                        origin and destination.
+     */
     public Graph(GraphProperties graphProperties) {
         this.edgeMap = new HashMap<>();
         this.properties = graphProperties;
     }
 
+    /**
+     * Initializes the graph with the required edges (routes) on startup.
+     * @param routes Contains the routes read from the database
+     */
     public void initializeGraph(List<Route> routes) {
         for (Route route : routes) {
             String origin = route.origin(), destination = route.destination();
@@ -35,7 +44,11 @@ public class Graph {
         }
     }
 
-    // Traverse through the nodes and return the minimum number of hunters seen before countdown.
+    /**
+     * Traverses though a graph given a context of bounty hunters and a countdown.
+     * @param context Contains a collection of bounty hunters and a countdown.
+     * @return probability of success truncated to an integer.
+     */
     public int traverse(final EmpireContext context) {
         if (properties.source().equals(properties.destination())) return 100;
 
@@ -47,8 +60,6 @@ public class Graph {
 
         while (!queue.isEmpty()) {
             Node currentNode = queue.poll();
-            System.out.println("[rathinb] Current node: " + currentNode);
-
             List<Edge> edges = edgeMap.getOrDefault(currentNode.name(), Collections.emptyList());
             edges.stream()
                     .flatMap(edge -> generatePossibleMoves(currentNode, edge, context))

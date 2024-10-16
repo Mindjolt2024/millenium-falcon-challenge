@@ -15,11 +15,14 @@ import javax.sql.DataSource;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Objects;
+import java.util.logging.Logger;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.dataiku.millennium.db")
 @Import({MillenniumConfig.class, GraphController.class, GraphService.class})
 public class MillenniumApplicationConfig {
+    private static final Logger LOG = Logger.getLogger(MillenniumApplicationConfig.class.getName());
     @Bean
     public ObjectMapper objectMapper() {
         return ObjectMapperFactory.getObjectMapper();
@@ -28,10 +31,12 @@ public class MillenniumApplicationConfig {
     @Bean
     public DataSource dataSource(MillenniumConfig config) throws URISyntaxException {
         URL resource = MilleniumApplication.class.getClassLoader().getResource(config.routesDb());
-        String path = new File(resource.toURI()).getAbsolutePath();
+        String path = new File(Objects.requireNonNull(resource).toURI()).getAbsolutePath();
 
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(String.format("jdbc:sqlite:%s",path));
+        String url = String.format("jdbc:sqlite:%s",path);
+        dataSource.setUrl(url);
+        LOG.info("Connection to database successful: " +  url);
         return dataSource;
     }
 }
