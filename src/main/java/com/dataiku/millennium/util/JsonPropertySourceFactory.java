@@ -11,6 +11,7 @@ import java.util.Map;
 
 public final class JsonPropertySourceFactory
         implements PropertySourceFactory {
+    // Used by Spring-boot as an object mapper.
     @Override
     @NonNull
     public PropertySource<?> createPropertySource(

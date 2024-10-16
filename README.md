@@ -12,14 +12,14 @@ The submission is split into three parts - backend, frontend and cli.
 ## Running the application
 ### Running the CLI
 
-We use `maven` to build and package our application. Just run the command to run the cli application.
+Simply run `./give-me-the-odds`. You may need to grant executable permissions before running this.
 ```
-$ mvn clean compile exec:java -Dexec.args="<millenium-falcon.json> <empire.json>"
+$ ./give-me-the-odds <millenium-falcon.json> <empire.json>"
 ```
 
 For example
 ```
- $ mvn clean compile exec:java  -Dexec.args="examples/example3/millennium-falcon.json examples/example3/empire.json"
+ $ ./give-me-the-odds examples/example3/millennium-falcon.json examples/example3/empire.json"
 ```
 
 ## Backend
@@ -39,8 +39,7 @@ curl -X POST http://localhost:8080/millennium/traverse \
 The frontend is written with React. Start the front-end with the following command
 
 ```angular2html
-# Navigate to the front-end directory
-$ cd millennium-frontend
+$ cd millennium-frontend # Navigate to the front-end directory
 $ npm install # Only the first time.
 $ npm start
 ```
